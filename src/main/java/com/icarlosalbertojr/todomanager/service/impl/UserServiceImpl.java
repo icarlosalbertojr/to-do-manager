@@ -3,7 +3,6 @@ package com.icarlosalbertojr.todomanager.service.impl;
 import com.icarlosalbertojr.todomanager.entity.UserEntity;
 import com.icarlosalbertojr.todomanager.repository.UserRepository;
 import com.icarlosalbertojr.todomanager.service.UserService;
-import com.icarlosalbertojr.todomanager.service.validation.UserValidation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -21,9 +20,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void save(UserEntity entity) {
-        if (!UserValidation.validateToSave(entity)) {
+        if (!entity.isAptToRegister()) {
             log.info("[UserServiceImpl] Insert all information to register - {}", entity);
-            throw new RuntimeException("Insert all information to register");
+            throw new RuntimeException("Insert all information to register user");
         }
 
         entity.setCreatedAt(LocalDateTime.now());

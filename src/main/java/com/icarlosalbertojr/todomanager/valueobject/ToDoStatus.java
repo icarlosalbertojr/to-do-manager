@@ -1,6 +1,6 @@
 package com.icarlosalbertojr.todomanager.valueobject;
 
-public enum Status {
+public enum ToDoStatus {
 
     DONE,
     PENDING,

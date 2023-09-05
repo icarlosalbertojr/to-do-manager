@@ -1,4 +1,4 @@
-package com.icarlosalbertojr.todomanager.dto;
+package com.icarlosalbertojr.todomanager.dto.user;
 
 import lombok.Builder;
 

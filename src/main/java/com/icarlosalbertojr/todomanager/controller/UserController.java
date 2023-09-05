@@ -1,8 +1,7 @@
 package com.icarlosalbertojr.todomanager.controller;
 
-import com.icarlosalbertojr.todomanager.dto.UserRequest;
-import com.icarlosalbertojr.todomanager.dto.UpdateUserRequest;
-import com.icarlosalbertojr.todomanager.dto.UserResponse;
+import com.icarlosalbertojr.todomanager.dto.user.UserRequest;
+import com.icarlosalbertojr.todomanager.dto.user.UserResponse;
 import com.icarlosalbertojr.todomanager.mapper.UserMapper;
 import com.icarlosalbertojr.todomanager.service.UserService;
 import jakarta.annotation.PostConstruct;
@@ -15,13 +14,9 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("/v1/users")
 public class UserController {
 
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
     private final UserService userService;
 
-    @PostConstruct
-    public void setMapperInstance() {
-        userMapper = UserMapper.INSTANCE;
-    }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
