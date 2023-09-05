@@ -46,8 +46,8 @@ public class UserServiceImpl implements UserService {
         var user = UserEntity.builder()
                 .id(userId)
                 .name(updateIfChanged(existingUser.getName(), entity.getName()))
-                .email(updateIfChanged(existingUser.getName(), entity.getName()))
-                .password(updateIfChanged(existingUser.getName(), entity.getName()))
+                .email(updateIfChanged(existingUser.getEmail(), entity.getEmail()))
+                .password(updateIfChanged(existingUser.getPassword(), entity.getPassword()))
                 .updatedAt(LocalDateTime.now())
                 .createdAt(existingUser.getCreatedAt())
                 .build();
@@ -59,6 +59,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity findByEmail(String email) {
         return userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("user not exists"));
+    }
+
+    @Override
+    public UserEntity findById(String id) {
+        return userRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("user not exists"));
     }
 }

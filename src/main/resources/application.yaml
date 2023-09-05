@@ -1,1 +1,9 @@
-
+spring:
+  data:
+    mongodb:
+      username: main_user
+      password: secret
+      port: 27017
+      host: localhost
+      database: to_do_manager
+      authentication-database: admin
